@@ -1,5 +1,7 @@
 package demos.algorithm;
 
+import java.util.BitSet;
+
 public class StringContain {
 	/**
 	 * 字符串str1是否包含str2所有出现的字符, 时间复杂度O(m * n)
@@ -83,10 +85,60 @@ public class StringContain {
 		}
 		return false;
 	}
+	
+	/**
+	 * 字符串str1是否包含str2所有出现的字符, 时间复杂度O(n)
+	 * @param str1 长字符串
+	 * @param str2 短字符串
+	 * @return true or false
+	 */
+	public boolean isContain3(String str1, String str2){
+		int[] tmp = new int[26];
+		int index = 0;
+		for(int i = 0; i < str1.length(); i++){
+			index = str1.charAt(i) - 'A';
+			tmp[index] ++;
+		}
+		
+		for(int i = 0; i < str2.length(); i++){
+			index = str2.charAt(i) - 'A';
+			if(tmp[index] == 0){
+				return false;
+			}
+		}
+		return true;
+	}
 
+	/**
+	 * 方法4：
+	 * 1.定义最小的26 个素数分别与字符'A'到'Z'对应。
+	 * 2.遍历长字符串，求得每个字符对应素数的乘积。
+	 * 3.遍历短字符串，判断乘积能否被短字符串中的字符对应的素数整除。
+	 * 4.输出结果。
+	 */
+	
+	/**
+	 * 利用Java中的位向量，进行位映射
+	 * 字符串str1是否包含str2所有出现的字符, 时间复杂度O(n + m)
+	 * @param str1 长字符串
+	 * @param str2 短字符串
+	 * @return true or false
+	 */
+	public boolean isContain5(String str1, String str2){
+		BitSet bs = new BitSet(26);
+		//将长字符串所包含的字符放进位向量
+		for(int i = 0; i < str1.length(); i++)
+			bs.set(str1.charAt(i) - 'A');
+		//确定短字符串的每一个字符是否包含在长字符串中
+		for(int i = 0; i < str2.length(); i++){
+			if(!bs.get(str2.charAt(i) - 'A'))
+				return false;
+		}
+		return true;
+	}
+	
 	public static void main(String[] args){
-		System.out.println(new StringContain().isContain2("ABCDEFGHLMNOPQRSZY", "ZDCGDSRQPOMY"));
-		System.out.println(new StringContain().countSort("ABCDECDS"));
-
+		System.out.println(new StringContain().isContain5("ABCDEFGHLMNOPQRSZY", "ZDCGDSRQPOMYZ"));
+		System.out.println(1<<32);
 	}
 }

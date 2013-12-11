@@ -49,6 +49,7 @@ public class Min_K {
 			return null;
 		}
 		for(int i = a.length / 2; i >= 1; i--){
+			//调整成大根堆
 			maxHeap(a, i, a.length);
 		}
 		return a;
@@ -108,47 +109,69 @@ public class Min_K {
 		return Arrays.copyOfRange(heap, 1, k + 1);
 	}
 	
-	//方法3 快速选择
+	/**
+	 * 获取最小的k个数，
+	 * @param num 输入数组
+	 * @param k 选取数的个数
+	 * @return 数组中k个最小的数
+	 */
 	public int[] min_k3(int[] num, int k){
 		quickSelect(num, 0, num.length - 1, k);
 		return Arrays.copyOfRange(num, 0, k);
 	}
-	private int quickSelect(int[] num, int low, int high, int k) {
+	/**
+	 * 快速选择，关键在于枢纽元的选取。适当选取枢纽元可以使时间复杂度做到O(n).（当前选取不能）
+	 * @param num 输入数组
+	 * @param low 数组中待调整位置数的下标
+	 * @param high 数组中待调整位置数的商标
+	 * @param k 要选取数的个数
+	 */
+	private void quickSelect(int[] num, int low, int high, int k) {
+		//缓存待调整位置的下标和上标
 		int low_tmp = low; 
 		int high_tmp = high;
-		int flag = num[low];
+		//选取枢纽元，可以随机选取（可以得到线性期望时间）
+		int pivot = num[low];
+		//调整元素位置
 		while(low < high){
-			while(low < high && num[high] >= flag){
+			while(low < high && num[high] >= pivot){
 				high--;
 			}
+			//小于枢纽元的值前移
 			num[low] = num[high];
-			while(low < high && num[low] < flag){
+			while(low < high && num[low] < pivot){
 				low++;
 			}
+			//大于枢纽元的值后移
 			num[high] = num[low];
 		}
-		num[low] = flag;
-		
+		//放置枢纽元
+		num[low] = pivot;
 		if(low == k - 1){
-			return num[low];
+			return;
 		}else if(low > k -1){
-			return quickSelect(num, low_tmp, low - 1, k);
+			quickSelect(num, low_tmp, low - 1, k);
 		}else{
-			return quickSelect(num, low + 1, high_tmp, k);
+			quickSelect(num, low + 1, high_tmp, k);
 		}
 	}
 
 	public static void main(String[] args){
-		int[] t = new int[]{2, 34, 56, 1, 43, 6, 232, 56, 78, 2, 5, 76, 23, 56,678, 98, 75, 12, 5};
-		int[] tt = new Min_K().min_k2(t, 9);
+		int[] datas = new int[]{2, 34, 56, 1, 43, 6, 232, 56, 78, 2, 5, 76, 23, 56,678, 98, 75, 12, 5};
+		System.out.println("Method one: ");
+		int[] t = new Min_K().min_k(datas, 9);
+		for(int i = 0; i < t.length; i++){
+			System.out.print(t[i] + " ");
+		}
+		System.out.println("\nMethod two: ");
+		int[] tt = new Min_K().min_k2(datas, 9);
 		for(int i = 0; i < tt.length; i++){
 			System.out.print(tt[i] + " ");
 		}
-		System.out.println();
-		int[] ttt = new Min_K().min_k3(t, 9);
+		System.out.println("\nMethod three: ");
+		int[] ttt = new Min_K().min_k3(datas, 9);
 		for(int i = 0; i < ttt.length; i++){
 			System.out.print(ttt[i] + " ");
 		}
-		//System.out.println(new Min_K().min_k3(t, 5));
 	}
 }

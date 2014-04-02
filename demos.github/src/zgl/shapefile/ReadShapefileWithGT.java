@@ -1,4 +1,4 @@
-package zgl.shapefile;
+/*package zgl.shapefile;
 
 import java.io.File;
 import java.io.IOException;
@@ -66,11 +66,11 @@ public class ReadShapefileWithGT {
 		}
 	}
 
-	/**
-	 * ¶ÁÈ¡ShapefileÎÄ¼þ
+	*//**
+	 * ï¿½ï¿½È¡Shapefileï¿½Ä¼ï¿½
 	 * @param path
-	 */
-	/*private static void readSHP(String path){
+	 *//*
+	private static void readSHP(String path){
 		ShapefileDataStore shpDataStore = null;
 		try{
 			shpDataStore = new ShapefileDataStore(new File(path).toURI().toURL());
@@ -94,7 +94,7 @@ public class ReadShapefileWithGT {
 				}
 			}
 		}
-	}*/
+	}
 	
 	private static void readSHP(String path){
 		 File file = new File(path);  
@@ -113,13 +113,13 @@ public class ReadShapefileWithGT {
 	                com.vividsolutions.jts.geom.Point p = ((Geometry)feature.getDefaultGeometry()).getCentroid();
 	                System.out.println(feature.getAttribute("cname"));
 	                System.out.println(p.getX() + " " + p.getY() + "\n\n");
-	                /*Geometry geometry = (Geometry)feature.getDefaultGeometry();  
+	                Geometry geometry = (Geometry)feature.getDefaultGeometry();  
 	                Collection<Property> p = feature.getProperties();
 	                Iterator<Property> it = p.iterator();
 	                while(it.hasNext()){
 	                	Property pro = it.next();
 	                	System.out.println(pro);
-	                }*/
+	                }
 	                
 	               // System.out.println(geometry.getCentroid().getX() + geometry.toText() + "\n");  
 	            }  
@@ -153,3 +153,4 @@ public class ReadShapefileWithGT {
 	
 	
 }
+*/

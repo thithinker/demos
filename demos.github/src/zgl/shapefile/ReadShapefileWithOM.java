@@ -1,4 +1,4 @@
-package zgl.shapefile;
+/*package zgl.shapefile;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,8 +20,8 @@ import com.bbn.openmap.plugin.esri.EsriPlugIn;
 
 public class ReadShapefileWithOM {
 	public static void main(String[] args) {
-		/*String path = "./buildPoint/buildPoint.shp";
-		readSHP(path);*/
+		String path = "./buildPoint/buildPoint.shp";
+		readSHP(path);
 		
 		//String path2 = "./buildPoint/buildPoint.dbf";
 		//readAttr2(path2);
@@ -29,7 +29,7 @@ public class ReadShapefileWithOM {
 		//readAttr2(path2+"dbf");
 		
 		String pathShp = "./buildPoint/buildPoint";
-		Map<String, Double[]> positions = readPointShp(pathShp, "Ö÷Â¥", 4);
+		Map<String, Double[]> positions = readPointShp(pathShp, "ï¿½ï¿½Â¥", 4);
 		Set<String> names = positions.keySet();
 		for(String n : names){
 			System.out.println(n + " " + positions.get(n)[0] + " " +  positions.get(n)[1]);
@@ -65,10 +65,10 @@ public class ReadShapefileWithOM {
 			
 			System.out.println(attrs.size());
 			
-			/*Set<Object> keys = attrs.keySet();
+			Set<Object> keys = attrs.keySet();
 			for(Object k : keys){
 				System.out.println(attrs.get(k));
-			}*/
+			}
 			
 		}catch(Exception e){
 			e.printStackTrace();
@@ -92,9 +92,9 @@ public class ReadShapefileWithOM {
 			
 			List<Object> list = dbfFile.getRecordData(85);
 			System.out.println(list.get(4));
-			/*for(Object b : list){
+			for(Object b : list){
 				System.out.println(b);
-			}*/
+			}
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -106,13 +106,13 @@ public class ReadShapefileWithOM {
 		
 	}
 	
-	/**
-	 * ´ÓµãshapefileÎÄ¼þÖÐ¶ÁÈ¡µã×ø±êÊý¾Ý
-	 * @param path: ¶ÁÈ¡ÎÄ¼þµÄÂ·¾¶£¬Èç"./buildPoint/buildPoint"£¬buildPointÎªÎÄ¼þÃû
-	 * @param name: ÐèÒª²éÕÒµÄÎ»ÖÃÃû
-	 * @param index: nameÔÚ¸ÃshapefileÎÄ¼þÖÐµÄÁÐË÷Òý
+	*//**
+	 * ï¿½Óµï¿½shapefileï¿½Ä¼ï¿½ï¿½Ð¶ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * @param path: ï¿½ï¿½È¡ï¿½Ä¼ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"./buildPoint/buildPoint"ï¿½ï¿½buildPointÎªï¿½Ä¼ï¿½ï¿½ï¿½
+	 * @param name: ï¿½ï¿½Òªï¿½ï¿½ï¿½Òµï¿½Î»ï¿½ï¿½ï¿½ï¿½
+	 * @param index: nameï¿½Ú¸ï¿½shapefileï¿½Ä¼ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @return 
-	 */
+	 *//*
 	private static Map<String, Double[]> readPointShp(String path, String name, int index){
 		//List<Map<String, Double[]>> list = new ArrayList<Map<String,Double[]>>();
 		Map<String, Double[]> map = new HashMap<String, Double[]>();
@@ -156,3 +156,4 @@ public class ReadShapefileWithOM {
 	}
 	
 }
+*/

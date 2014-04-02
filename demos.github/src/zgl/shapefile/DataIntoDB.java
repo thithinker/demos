@@ -1,4 +1,4 @@
-package zgl.shapefile;
+/*package zgl.shapefile;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -102,3 +102,4 @@ public class DataIntoDB {
 		
 	}
 }
+*/

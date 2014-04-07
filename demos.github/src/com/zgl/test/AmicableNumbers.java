@@ -26,15 +26,17 @@ public class AmicableNumbers {
 				j += i;
 			}
 		}
-		
+		int sum = 0;
 		for(int i = 0; i < max; i++){
 			if(tmp[i] > i && tmp[i] < max &&i == tmp[tmp[i]]){	//去重，不越界，满足亲和数
 				System.out.println(i + " " + tmp[i]); 
+				sum += i + tmp[i];
 			}
 		}
+		System.out.println("sum: " + sum);
 	}
 	
 	public static void main(String[] args) {
-		new AmicableNumbers().find(50000000);
+		new AmicableNumbers().find(10000);
 	}
 }

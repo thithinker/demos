@@ -12,7 +12,7 @@ import java.util.ArrayList;
 /**
  * 
  * @author yize
- * 2013Äê12ÔÂ6ÈÕ
+ * 2013å¹´12æœˆ6æ—¥
  */
 public class Emperor implements Serializable {
 	
@@ -38,7 +38,7 @@ public class Emperor implements Serializable {
 		
 		System.out.println(es.get(0) == es.get(1));
 		
-		//Í¨¹ı·´Éä»ñÈ¡¶ÔÏó£¬´ËÊ±EmperorµÄÊµÀı¶ÔÏó²»ÔÙÎ¨Ò»
+		//é€šè¿‡åå°„è·å–å¯¹è±¡ï¼Œæ­¤æ—¶Emperorçš„å®ä¾‹å¯¹è±¡ä¸å†å”¯ä¸€
 		try {
 			Class<?> clazz = Class.forName("zgl.design.singleton.Emperor");
 			Emperor emperor1 = (Emperor)clazz.newInstance();
@@ -54,7 +54,7 @@ public class Emperor implements Serializable {
 		}
 		
 		
-		//Í¨¹ı·´ĞòÁĞ»¯»ñÈ¡¶ÔÏó£¬´ËÊ±EmperorµÄÊµÀı¶ÔÏóÒ²²»ÔÙÎ¨Ò»
+		//é€šè¿‡ååºåˆ—åŒ–è·å–å¯¹è±¡ï¼Œæ­¤æ—¶Emperorçš„å®ä¾‹å¯¹è±¡ä¹Ÿä¸å†å”¯ä¸€
 		ObjectOutputStream oos;
 		ObjectInputStream ois;
 		try {

@@ -31,13 +31,20 @@ public class ForJob {
 		
 		System.out.println(t.transNum(81, 4));*/
 		
-		//test sequence()
+		/*//test sequence()
 		List<String> list = new ArrayList<String>();
 		list.add("a");
 		list.add("b");
 		list.add("c");
 		list.add("d");
-		t.sequence(list);
+		t.sequence(list);*/
+		
+		//test continuousSum()
+		t.continuousSum(999);
+		System.out.println("");
+		t.continuousSum(9999);
+		System.out.println();
+		t.continuousSum(99999);
 	}
 	/**
 	 * 计算两个数的和
@@ -189,6 +196,10 @@ public class ForJob {
 	 * @param len 进行排列的字符个数
 	 */
 	public <E> void sequence(List<E> chs, int len){
+		if(len > chs.size()){
+			System.out.println("要求排列的字符数大于列表中字符数");
+			return;
+		}
 		List<E> tmp = new ArrayList<>();
 		sequence(tmp, chs, 4);
 	}
@@ -212,6 +223,68 @@ public class ForJob {
 			newTmp.add(newChs.get(i));
 			newChs.remove(i);
 			sequence(newTmp, newChs, len);
+		}
+	}
+	
+	/**
+	 * 连续n个数的和为给定值
+	 * 2014年8月8日
+	 * @param sum 和值
+	 */
+	public void continuousSum(int sum){
+		int p1 = 1;
+		int p2 = 1;
+		while(p2 < sum){
+			if(sum(p1, p2) < sum)
+				p2++;
+			else if(sum(p1, p2) > sum)
+				p1++;
+			else {
+				print(p1, p2);
+				p2++;
+			}
+		}
+	}
+	/**
+	 * 输出从p1到p2的数
+	 * 2014年8月8日
+	 * @param p1 起始值
+	 * @param p2 终点值
+	 */
+	private void print(int p1, int p2) {
+		for(int i = p1; i <= p2; i++){
+			System.out.print(i + " ");
+		}
+		System.out.println();
+	}
+	/**
+	 * 计算p1到p2的和（包含p1和p2）
+	 * 2014年8月8日
+	 * @param p1 起始值
+	 * @param p2 终止值
+	 * @return p1到p2的和
+	 */
+	private int sum(int p1, int p2) {
+		return (p2 - p1 + 1) * (p1 + p2) / 2;
+	}
+	
+	/**
+	 * 改变数组中元素顺序，使得数组中所有奇数在所有偶数的左侧
+	 * @param a 待处理数组
+	 */
+	public void move1(int[] a){
+		int left = 0;
+		int right = a.length - 1;
+		int tmp;
+		while(left < right){
+			while(left < a.length && a[left] % 2 != 0) left++;		//注意越界检查
+			while(right > -1 && a[right] % 2 == 0) right--;
+			
+			if(left < right){
+				tmp = a[left];
+				a[left++] = a[right];
+				a[right--] = tmp;
+			}
 		}
 	}
 }

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.sound.midi.Sequence;
+
 /**
  * 面试题
  * @author yize
@@ -12,7 +14,7 @@ import java.util.List;
 public class ForJob {
 	public static void main(String[] args) {
 		ForJob t = new ForJob();	
-		//System.out.println(t.add(-20, 52));
+		/*//System.out.println(t.add(-20, 52));
 	//	t.itemSum(20, 15);
 		
 		int[] arr = {5, 9,4,3,2,5,4,3,2};
@@ -27,7 +29,15 @@ public class ForJob {
 		
 		System.out.println(t.numOfOne(1210000));
 		
-		System.out.println(t.transNum(81, 4));
+		System.out.println(t.transNum(81, 4));*/
+		
+		//test sequence()
+		List<String> list = new ArrayList<String>();
+		list.add("a");
+		list.add("b");
+		list.add("c");
+		list.add("d");
+		t.sequence(list);
 	}
 	/**
 	 * 计算两个数的和
@@ -163,4 +173,45 @@ public class ForJob {
 		return r.toString();
 	}
 	
+	/**
+	 * 对列表中的字符进行全排列
+	 * 2014年8月8日
+	 * @param chs 字符列表
+	 */
+	public <E> void sequence(List<E> chs){
+		sequence(chs, chs.size());
+	}
+	
+	/**
+	 * 选取列表的部分元素进行排列
+	 * 2014年8月8日
+	 * @param chs 字符列表
+	 * @param len 进行排列的字符个数
+	 */
+	public <E> void sequence(List<E> chs, int len){
+		List<E> tmp = new ArrayList<>();
+		sequence(tmp, chs, 4);
+	}
+	
+	/**
+	 * 递归求解全排列
+	 * 2014年8月8日
+	 * @param tmp 已排列字符
+	 * @param chs 未排列字符
+	 * @param len 进行排列的字符个数
+	 */
+	private <E> void sequence(List<E> tmp, List<E> chs, int len){
+		if(tmp.size() == len){
+			System.out.println(tmp);
+			return;
+		}
+		
+		for(int i = 0; i < chs.size(); i++){
+			List<E> newTmp = new ArrayList<>(tmp);
+			List<E> newChs = new ArrayList<>(chs);
+			newTmp.add(newChs.get(i));
+			newChs.remove(i);
+			sequence(newTmp, newChs, len);
+		}
+	}
 }

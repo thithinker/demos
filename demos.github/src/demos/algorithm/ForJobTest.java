@@ -22,4 +22,6 @@ public class ForJobTest extends TestCase{
 		assertEquals("1000", forJob.transNum(27, 3));
 		assertEquals("111111", forJob.transNum(63));
 	}
+	
+	
 }

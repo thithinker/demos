@@ -1,14 +1,10 @@
 package demos.algorithm;
 
-/*class Node<T>{
-	public Node(T v){
-		this.value = v;
-	}
-	
-	T value;
-	Node<T> next;
-}*/
-
+/**
+ * 求两个链表的第一个公共节点
+ * @author yize
+ *
+ */
 public class FirstCommonNode {
 	public static void main(String[] args) {
 		Node<String> a = new Node<String>("a");
@@ -44,14 +40,18 @@ public class FirstCommonNode {
 	}
 	
 	
-	
+	/**
+	 * 两个链表的第一个公共节点
+	 * 2014年8月8日 
+	 * @param head1 第一个链表的头节点
+	 * @param head2 第二个链表的头节点
+	 * @return
+	 */
 	public Node<?> calc(Node<?> head1, Node<?> head2){
 		int len1 = len(head1);
 		int len2 = len(head2);
 		Node<?> p1 = head1;
 		Node<?> p2 = head2;
-		
-		
 		
 		if(len1 > len2){
 			int tmp = len1 - len2;
@@ -77,6 +77,12 @@ public class FirstCommonNode {
 		}
 	}
 	
+	/**
+	 * 链表的长度
+	 * 2014年8月8日
+	 * @param head 链表头节点
+	 * @return 该链表的长度
+	 */
 	private int len(Node<?> head){
 		int len = 0;
 		if(head == null){
@@ -88,7 +94,6 @@ public class FirstCommonNode {
 			p = p.next;
 			len++;
 		}
-		
 		return len;
 	}
 }
